@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 细微表情识别系统 - EfficientNet-B0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <div class="logo">
+        <span class="ai-badge">AI</span>
+        <h1>EMOTION<span>LAB</span></h1>
+      </div>
+      <p class="subtitle">基于 EfficientNet-B0 的微表情流式分析</p>
+    </header>
+
+    <main>
+      <div class="video-container card">
+        <video id="webcam" autoplay playsinline muted></video>
+        <canvas id="overlay"></canvas>
+        <div class="scanner-line"></div>
+        <div class="status-indicator">
+          <span class="pulse"></span>
+          实时推断中...
+        </div>
+      </div>
+
+      <div class="analysis-panel">
+        <section class="card result-card">
+          <h2>识别结果</h2>
+          <div id="detection-result" class="main-result">
+            <span class="emotion-emoji">😶</span>
+            <span class="emotion-text">等待识别...</span>
+          </div>
+          <div class="confidence-meter">
+            <div id="result-confidence-bar" class="conf-fill"></div>
+          </div>
+        </section>
+
+        <section class="card history-card">
+          <h2>最近记录</h2>
+          <div id="detection-history" class="history-list">
+            <!-- History items will be injected here -->
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="loading-overlay" id="loading-screen">
+      <div class="loader"></div>
+      <p>正在初始化神经引擎...</p>
+    </div>
+  </div>
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
